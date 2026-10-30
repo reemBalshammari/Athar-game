@@ -112,7 +112,7 @@ function closeApp() {
 function renderBrief() {
   select("#windowTitle").textContent = "README.md — ATHAR";
   setWindowContent(
-    `<span class="eyebrow">مرحبًا بك في المشروع</span><h2>ثلاثة إصلاحات.<br>وإطلاق يستحق الانتظار.</h2><p class="description">نعمل على مشروع تقني يخدم المجتمع. قبل الإطلاق اكتشف الفريق أخطاء تحتاج انتباهك. افتح كل ملف وأصلح المشكلة بنفسك.</p><div class="briefList"><div class="briefItem"><b>01</b><span>ملفات المشروع: امنع رفع الأسرار والبيانات الحساسة إلى Git.</span></div><div class="briefItem"><b>02</b><span>محرّر الكود: أصلح شرط صلاحية رابط استعادة كلمة المرور ثم شغّل الاختبار.</span></div><div class="briefItem"><b>03</b><span>دمج التعديلات: اجمع وظائف الفرعين بالترتيب الصحيح.</span></div></div><div class="actions"><button class="primary" id="beginFiles">فتح ملفات المشروع</button></div>`,
+    `<span class="eyebrow">مرحبًا بك في المشروع</span><h2>ثلاثة إصلاحات<br>وإطلاق يستحق الانتظار</h2><p class="description">نعمل على مشروع تقني يخدم المجتمع. قبل الإطلاق اكتشف الفريق أخطاء تحتاج انتباهك. افتح كل ملف وأصلح المشكلة بنفسك.</p><div class="briefList"><div class="briefItem"><b>01</b><span>ملفات المشروع: امنع رفع الأسرار والبيانات الحساسة إلى Git.</span></div><div class="briefItem"><b>02</b><span>محرّر الكود: أصلح شرط صلاحية رابط استعادة كلمة المرور ثم شغّل الاختبار.</span></div><div class="briefItem"><b>03</b><span>دمج التعديلات: اجمع وظائف الفرعين بالترتيب الصحيح.</span></div></div><div class="actions"><button class="primary" id="beginFiles">فتح ملفات المشروع</button></div>`,
   );
   select("#beginFiles").onclick = () => openApp("0");
 }
