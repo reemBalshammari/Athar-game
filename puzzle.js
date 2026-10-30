@@ -93,7 +93,7 @@ function completeTask(i, msg) {
 }
 function openApp(id) {
   if (id === "terminal" && !completedTasks.every(Boolean)) {
-    showToast("أكمل الإصلاحات الثلاثة قبل إطلاق المشروع.");
+    showToast("أكمل الإصلاحات الثلاثة قبل إطلاق المشروع");
     return;
   }
   previousFocus = document.activeElement;
@@ -363,7 +363,7 @@ function checkMergedSteps() {
   else {
     playTone(220);
     showFeedback(
-      "راجع التسلسل: نتحقّق من المدخلات أولًا ثم نحدّث كلمة المرور وبعدها نرسل التأكيد.",
+      "راجع التسلسل: نتحقّق من المدخلات أولًا ثم نحدّث كلمة المرور وبعدها نرسل التأكيد",
     );
   }
 }
