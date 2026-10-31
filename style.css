@@ -1251,3 +1251,88 @@ h2 {
     font-size: 9px;
   }
 }
+
+/* Interface refinements */
+body { overflow-x: hidden; }
+button { touch-action: manipulation; }
+button:disabled { cursor: default; }
+.primary,.secondary,.headtools button { min-height: 44px; border-radius: 12px; }
+.primary { background: linear-gradient(135deg,#d4e6bc,#a9c9a1); box-shadow: 0 8px 28px #0003; }
+.headtools button { background: #18372d90; }
+.landingCopy { position: relative; z-index: 1; }
+.landingCopy h1 { font-weight: 700; letter-spacing: -3px; }
+.landingCopy p { color: #b5c8bd; }
+.landingFooter { gap: 18px; }
+.leaderCredit { font-size: 10px; line-height: 1.9; }
+.appwindow { border-radius: 18px; }
+.windowbar { position: sticky; top: 0; z-index: 2; gap: 16px; }
+.windowbar button { width: 36px; height: 36px; border-radius: 10px; background: #ffffff0d; color: #e6c8be; }
+.windowbar button svg { width: 18px; height: 18px; }
+.actions button { min-height: 46px; }
+.uiIcon { width: 23px; height: 23px; display: inline-block; vertical-align: middle; flex-shrink: 0; }
+.fileIcon .uiIcon { width: 30px; height: 30px; }
+.dock .uiIcon { width: 18px; height: 18px; }
+.filename i .uiIcon { width: 18px; height: 18px; }
+.mission .num .uiIcon { width: 15px; height: 15px; }
+.desktopIcon.done strong:after { content: ' • مكتمل'; font: 9px Tahoma,sans-serif; }
+.code { overflow-x: auto; white-space: pre; overflow-wrap: normal; }
+.codeToken { min-height: 44px; min-width: 44px; }
+.testrow { align-items: center; line-height: 1.7; }
+.testrow > span:last-child { flex-shrink: 0; }
+.fileRow { gap: 12px; }
+.fileRow button { min-height: 40px; flex-shrink: 0; }
+.filename { min-width: 0; overflow-wrap: anywhere; }
+.block { min-height: 48px; }
+.terminalInput input { min-width: 0; font-size: 16px; }
+@media(max-width: 700px) {
+ header { height: auto; min-height: 82px; padding: 14px 5vw; gap: 12px; }
+ .edition { display: none; }
+ .brand { font-size: 10px; gap: 8px; }
+ .brand b { font-size: 12px; }
+ .brand img { width: 42px; height: 42px; }
+ .headtools { gap: 5px; }
+ .headtools button,.headtools button:first-of-type { font-size: 10px; padding: 8px; }
+ #scene { opacity: .16; filter: blur(2px); }
+ #landing { min-height: calc(100svh - 82px); padding: 26px 6vw 0; display: flex; flex-direction: column; }
+ .landingCopy { width: 100%; max-width: none; padding: 26px 22px; border: 1px solid #a7c5b32b; border-radius: 24px; background: linear-gradient(145deg,#17382fed,#0b241ff2); box-shadow: 0 20px 60px #0003; }
+ .eyebrow { font-size: 11px; line-height: 1.8; }
+ .landingCopy h1 { font-size: clamp(58px,16vw,86px); line-height: 1.15; margin: 24px 0; letter-spacing: -2px; }
+ .landingCopy h1 br { display: none; }
+ .landingCopy h1 em { margin-inline-start: 10px; }
+ .landingCopy p { font-size: 14px; line-height: 2; margin: 20px 0; }
+ .landingCopy .primary { margin-top: 12px; width: 100%; min-height: 52px; font-size: 15px; }
+ .landingMeta { justify-content: center; flex-wrap: wrap; gap: 10px; font-size: 10px; margin-top: 22px; }
+ .laptopCaption { display: none; }
+ .landingFooter { position: relative; inset: auto; width: 100%; margin-top: auto; padding: 22px 0; font-size: 11px; }
+ .leaderCredit { font-size: 9px; margin-top: 6px; }
+ .landingFooter img { width: 44px; height: 44px; }
+ .workarea { max-height: none; display: block; }
+ .sidebar { width: 100%; padding: 14px; }
+ .sidebar > .eyebrow,.sidebar h2 { display: none; }
+ #missionList { display: flex; gap: 8px; }
+ .mission { flex: 1; font-size: 10px; gap: 6px; border: 0; padding: 5px 0; }
+ .mission small { display: none; }
+ .mission .num { flex-shrink: 0; width: 24px; height: 24px; }
+ .sidebottom { display: block; padding-top: 12px; margin-top: 0; }
+ .sidebottom p { display: none; }
+ .progress { margin-bottom: 0; }
+ .desktopArea { min-height: 540px; }
+ .desktopIcons { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+ .desktopIcon { width: 100%; min-width: 0; border: 1px solid #ffffff0b; background: #ffffff03; }
+ .desktopIcon strong { white-space: normal; font-size: 11px; }
+ .overlay { padding: 10px; align-items: center; }
+ .appwindow { max-height: calc(100dvh - 24px); width: 100%; }
+ .appbody { padding: 22px 16px; }
+ .appbody h2 { font-size: 25px; }
+ .description { font-size: 13px; line-height: 1.9; }
+ .windowbar { padding: 10px 12px; }
+ .windowbar > span { overflow-wrap: anywhere; }
+ .code { font-size: 12px; line-height: 2.3; padding: 16px 10px; }
+ .tests { font-size: 10px; }
+ .actions { gap: 10px; }
+ .actions .primary { flex: 1; }
+ .mergeGrid { grid-template-columns: 1fr; }
+ .dock { gap: 8px; }
+ .closing h2 { font-size: 32px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }

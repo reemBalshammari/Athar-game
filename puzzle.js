@@ -147,7 +147,7 @@ function renderFilesPuzzle() {
 function renderCodePuzzle() {
   select("#windowTitle").textContent = "auth.js — Code editor";
   setWindowContent(
-    `<span class="eyebrow">المهمّة ٠٢ / إصلاح الكود</span><h2>رابط صالح أو منتهي؟</h2><p class="description">هذا الشرط يحدّد صلاحية رابط استعادة كلمة المرور. الاختبار يفشل. اضغط العلامة الذهبية داخل الكود لتغيير المقارنة ثم شغّل الاختبارات.</p><div class="codeEditor"><div class="codetab">auth.js <span style="color:#d6b579;margin-left:20px">● 1 issue</span></div><div class="code"><span class="line"><span class="ln">1</span><span class="comment">// A valid link expires in the future.</span></span><span class="line"><span class="ln">2</span><span class="kw">function</span> <span class="fn">isLinkValid</span>(expiresAt, now) {</span><span class="line"><span class="ln">3</span>  <span class="kw">return</span> expiresAt <button class="codeToken" id="operator" aria-label="تغيير عامل المقارنة">${comparisonOperator === "<" ? "&lt;" : comparisonOperator === ">" ? "&gt;" : "==="}</button> now;</span><span class="line"><span class="ln">4</span>}</span></div></div><div class="tests" id="tests"><div class="testrow"><span>link expires in 10 minutes</span><span>WAITING</span></div><div class="testrow"><span>link expired 10 minutes ago</span><span>WAITING</span></div><div class="testrow"><span>link expires exactly now</span><span>WAITING</span></div></div><div class="actions"><button class="primary" id="runTests">تشغيل الاختبارات ▶</button><button class="secondary" id="hint">تلميح</button></div><div class="feedback" id="feedback" role="status"></div>`,
+    `<span class="eyebrow">المهمّة ٠٢ / إصلاح الكود</span><h2>رابط صالح أو منتهي؟</h2><p class="description">هذا الشرط يحدّد صلاحية رابط استعادة كلمة المرور. الاختبار يفشل. اضغط العلامة الذهبية داخل الكود لتغيير المقارنة ثم شغّل الاختبارات.</p><div class="codeEditor"><div class="codetab">auth.js <span style="color:#d6b579;margin-left:20px">● 1 issue</span></div><div class="code"><span class="line"><span class="ln">1</span><span class="comment">// A valid link expires in the future.</span></span><span class="line"><span class="ln">2</span><span class="kw">function</span> <span class="fn">isLinkValid</span>(expiresAt, now) {</span><span class="line"><span class="ln">3</span>  <span class="kw">return</span> expiresAt <button class="codeToken" id="operator" aria-label="تغيير عامل المقارنة">${comparisonOperator === "<" ? "&lt;" : comparisonOperator === ">" ? "&gt;" : "==="}</button> now;</span><span class="line"><span class="ln">4</span>}</span></div></div><div class="tests" id="tests"><div class="testrow"><span>link expires in 10 minutes</span><span>WAITING</span></div><div class="testrow"><span>link expired 10 minutes ago</span><span>WAITING</span></div><div class="testrow"><span>link expires exactly now</span><span>WAITING</span></div></div><div class="actions"><button class="primary" id="runTests">تشغيل الاختبارات</button><button class="secondary" id="hint">تلميح</button></div><div class="feedback" id="feedback" role="status"></div>`,
   );
   select("#operator").onclick = cycleComparisonOperator;
   select("#hint").onclick = () =>
@@ -334,7 +334,7 @@ function runLinkTests() {
   select("#tests").innerHTML = cases
     .map(
       (c, i) =>
-        `<div class="testrow ${pass[i] ? "pass" : "fail"}"><span>${c[3]}</span><span>${pass[i] ? "✓ PASS" : "✕ FAIL"}</span></div>`,
+        `<div class="testrow ${pass[i] ? "pass" : "fail"}"><span>${c[3]}</span><span>${pass[i] ? "PASS" : "FAIL"}</span></div>`,
     )
     .join("");
   if (pass.every(Boolean))
@@ -408,3 +408,44 @@ function replayGame() {
   resetGame();
   openApp("brief");
 }
+
+
+// Use vector icons so controls look consistent across devices.
+function interfaceIcon(kind) {
+  const paths = {
+    file: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h4M10 12h5m-5 4h5"/>',
+    code: '<path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/>',
+    branch: '<circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><path d="M6 7v10m12-10v2a3 3 0 0 1-3 3H9a3 3 0 0 0-3 3"/>',
+    terminal: '<rect x="2" y="4" width="20" height="16" rx="3"/><path d="m6 9 3 3-3 3m6 0h5"/>',
+    close: '<path d="m6 6 12 12M6 18 18 6"/>',
+    check: '<path d="m5 12 4 4L19 6"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>'
+  };
+  return '<svg class="uiIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + paths[kind] + '</svg>';
+}
+function refreshInterfaceIcons() {
+  document.querySelectorAll('.fileIcon').forEach((el) => {
+    if (el.querySelector('svg')) return;
+    const app = el.closest('[data-open]')?.dataset.open;
+    el.innerHTML = interfaceIcon(app === '2' ? 'branch' : app === 'terminal' ? 'terminal' : app === 'brief' ? 'file' : 'code');
+  });
+  document.querySelectorAll('.dock > span').forEach((el, i) => {
+    if (!el.querySelector('svg')) el.innerHTML = interfaceIcon(['code','branch','terminal'][i]);
+  });
+  document.querySelectorAll('.mission.done .num').forEach((el) => {
+    if (!el.querySelector('svg')) el.innerHTML = interfaceIcon('check');
+  });
+  document.querySelectorAll('.filename i').forEach((el) => {
+    if (!el.querySelector('svg')) el.innerHTML = interfaceIcon('file');
+  });
+  document.querySelectorAll('.block b').forEach((el) => {
+    if (!el.querySelector('svg')) el.innerHTML = interfaceIcon('plus');
+  });
+}
+select('#closeWindow').innerHTML = interfaceIcon('close');
+select('#closeVideo').innerHTML = interfaceIcon('close');
+const credit = select('.leaderCredit');
+if (credit) credit.textContent = 'إعداد وتنفيذ ريم بريكان الشمري — قائدة لجنة التقنية والتطوير';
+refreshInterfaceIcons();
+new MutationObserver(refreshInterfaceIcons).observe(select('#desktop'), {childList:true,subtree:true});
+new MutationObserver(refreshInterfaceIcons).observe(select('#windowContent'), {childList:true,subtree:true});
