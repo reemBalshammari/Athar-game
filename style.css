@@ -1336,3 +1336,43 @@ button:disabled { cursor: default; }
  .closing h2 { font-size: 32px; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }
+
+/* Release landing */
+body { background: #061a17; }
+header { max-width: 1600px; margin: auto; z-index: 3; }
+.ambient { background: radial-gradient(ellipse at 26% 43%,#2c86632c,transparent 58%),radial-gradient(ellipse at 85% 10%,#d4b57b0c,transparent 45%); }
+#landing { position: relative; isolation: isolate; max-width: 1600px; margin: auto; display: grid; grid-template-columns: 1fr 1.3fr; grid-template-rows: 1fr auto; align-items: center; min-height: calc(100svh - 96px); padding: 20px 5vw 0; gap: 0 20px; }
+#landing::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .15; background-image: linear-gradient(#8dbba61c 1px,transparent 1px),linear-gradient(90deg,#8dbba61c 1px,transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse at center,#000,transparent 73%); }
+.landingCopy { grid-column: 1; grid-row: 1; padding: 35px 0; background: none; border: 0; box-shadow: none; max-width: 540px; }
+.landingCopy .eyebrow { display: inline-flex; align-items: center; gap: 10px; border: 1px solid #a6d2b52b; background: #1b3c304d; border-radius: 30px; padding: 9px 15px; color: #cbdbb8; font-size: 11px; }
+.landingCopy h1 { font-size: clamp(76px,8vw,126px); line-height: 1.25; font-weight: 700; letter-spacing: -4px; margin: 24px 0 18px; }
+.landingCopy h1 em { color: #cce2b8; text-shadow: 0 0 55px #c1d99d18; }
+.landingCopy p { font-size: 16px; line-height: 2.1; color: #a3bcb0; margin: 18px 0 28px; }
+.landingCopy .primary { margin-top: 0; padding: 17px 35px; min-width: 195px; min-height: 56px; border-radius: 12px; font-size: 15px; box-shadow: 0 0 0 5px #bed6ad09,0 14px 40px #0004; }
+.landingMeta { margin-top: 28px; color: #819f90; }
+.laptopStage { grid-column: 2; grid-row: 1; position: relative; width: 100%; height: clamp(380px,59vh,680px); min-width: 0; direction: ltr; }
+.laptopStage::before { content: ''; position: absolute; width: 75%; height: 65%; left: 12%; top: 18%; border-radius: 50%; background: radial-gradient(ellipse,#338f6540,transparent 68%); filter: blur(28px); pointer-events: none; }
+#scene { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; filter: none; pointer-events: none; z-index: 1; }
+.laptopCaption { display: block; grid-column: 2; grid-row: 1; position: relative; inset: auto; align-self: end; justify-self: center; margin-bottom: 18px; font: 10px monospace; color: #a4bca6; letter-spacing: 2px; }
+.captionStatus { display: inline; margin: 0 0 0 12px; font-size: 8px; }
+.landingFooter { grid-column: 1 / -1; grid-row: 2; position: relative; inset: auto; width: 100%; margin: 18px 0 0; padding: 20px 0 24px; border-top: 1px solid #b0d1bd20; }
+.leaderCredit { font-size: 9px; color: #839f90; }
+.sceneFallback { display: grid; place-items: center; color: var(--mint); border: 1px solid var(--line); border-radius: 30px; font-size: 24px; }
+@media(max-width: 800px) {
+ header { min-height: 82px; }
+ #landing { min-height: calc(100svh - 82px); grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; gap: 0; padding: 8px 6vw 0; }
+ .landingCopy { grid-column: 1; grid-row: 1; width: 100%; max-width: none; text-align: center; padding: 18px 0 0; }
+ .landingCopy .eyebrow { font-size: 10px; padding: 8px 12px; }
+ .landingCopy h1 { font-size: clamp(57px,14vw,90px); line-height: 1.3; margin: 20px 0 10px; letter-spacing: -2px; }
+ .landingCopy h1 br { display: none; }
+ .landingCopy h1 em { margin-inline-start: 10px; }
+ .landingCopy p { font-size: 13px; line-height: 1.9; margin: 12px 0 20px; }
+ .landingCopy .primary { width: auto; min-width: 210px; min-height: 50px; padding: 14px 30px; font-size: 14px; }
+ .landingMeta { justify-content: center; margin-top: 20px; font-size: 9px; }
+ .laptopStage { grid-column: 1; grid-row: 2; height: clamp(240px,68vw,390px); margin-top: 0; }
+ .laptopCaption { grid-column: 1; grid-row: 3; margin: -6px 0 18px; font-size: 8px; }
+ .captionStatus { font-size: 7px; }
+ .landingFooter { grid-row: 4; margin-top: 0; padding-top: 16px; font-size: 10px; }
+ .leaderCredit { font-size: 8px; max-width: 260px; }
+ #scene { opacity: 1; filter: none; }
+}
